@@ -1,29 +1,15 @@
-var todolist = [
-    {
-        task: 'do some',
-        dueDate: 'May 2, 2019',
-        category: 'work'
-    },
-    {
-        task: 'not to do',
-        dueDate: 'June 29, 2021',
-        category: 'personal'
-    },
-    {
-        task: 'meeting someone',
-        dueDate: 'September 22, 2021',
-        category: 'school'
-    },
-    {
-        task: 'hosting',
-        dueDate: 'October 21, 2021',
-        category: 'others'
-    }
-];
+const db = require('../config/mongoose');
+const TodoList = require('../models/todo');
 
 module.exports.home = function home_controller(req, res){
-    res.render('index', {
-        title: 'To Do App',
-        todolist: todolist,
+    TodoList.find({}, function(err, todo){
+        if(err){
+            console.log('Error in fetching data from database');
+            return;
+        }
+        return res.render('index',{
+            title: 'To Do List',
+            todolist: todo
+        });
     });
 }
