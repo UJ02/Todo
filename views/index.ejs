@@ -37,14 +37,15 @@
                         </div>
                     </div>
                     <div class="buttons d-flex justify-content-center flex-wrap pt-4 pb-4">
-                        <button type="submit" id='add' class="btn btn-dark btn-lg pl-0 mr-2"><i class="fa fa-plus mr-3 ml-2"></i>ADD TASK</button>
-                        <button type="submit" id='delete' class="btn btn-danger btn-lg pl-0"><i class="fa fa-trash mr-3 ml-2"></i>DELETE TASKS</button>
+                        <button type="button" id='add' class="btn btn-dark btn-lg pl-0 mr-2"><i class="fa fa-plus mr-3 ml-2"></i>ADD TASK</button>
+                        <button type="button" id='delete' class="btn btn-danger btn-lg pl-0"><i class="fa fa-trash mr-3 ml-2"></i>DELETE TASKS</button>
                     </div>
                     <div class="d-flex flex-column text-secondary">
+                        <% var a = 1 %> 
                         <% for(i of todolist) { %>
                             <div class="display w-75 align-self-center border-top border-secondary d-flex row">
-                                <input type="checkbox" name="todo" value="<%= i.task %> " id="<%= i.task %> " class="mt-4 col-1">
-                                <label for="<%= i.task %> " class="ml-3 col-6">
+                                <input type="checkbox" name="<%= i.task %>" value="<%= i.task %>" id='val<%= a %>' class="mt-4 col-1">
+                                <label for="val<%= a %>" class="ml-3 col-6">
                                     <p class="mb-0 mt-2 font-weight-bold"><%= i.task %> </p>
                                     <p class="small"><i class="fa fa-calendar-alt mr-2"></i><%= i.dueDate %> </p>
                                 </label>
@@ -56,6 +57,8 @@
                                                 <% color = 'primary'; %>
                                         <% } else if(i.category == 'School'){ %>
                                                 <% color = 'warning'; %>
+                                        <% } else if(i.category == 'Cleaning'){ %>
+                                                <% color = 'success' %>  
                                         <% }else{ %>
                                                 <% color = 'dark'; %>
                                         <% } %>
@@ -64,6 +67,7 @@
                                     </button>
                                 </div>
                             </div>
+                            <% a++ %> 
                         <% } %>
                     </div>
                 </form>
