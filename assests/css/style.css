@@ -5,3 +5,23 @@ body{
 .outline{
     outline: none;
 }
+@keyframes typewriter {
+    from{
+        width: 0%;
+        ;
+    }
+    to{
+        width: 20%;
+    }
+}
+@keyframes blinkTextCursor{
+    from{border-right: 1px solid black;}
+    to{border-right-color: transparent;}
+  }
+.type-writer{
+    overflow: hidden;
+    white-space: nowrap;
+    animation: typewriter 4s steps(44) 1s 2,
+        blinkTextCursor 500ms steps(44) 20;
+    border-right: 0px;
+}
